@@ -12,7 +12,7 @@ import (
 // modified (nil Resolver will be set) during operation.
 var (
 	DefaultMarshalOptions   protojson.MarshalOptions
-	DefaultUnmarshalOptions proto.UnmarshalOptions
+	DefaultUnmarshalOptions protojson.UnmarshalOptions
 )
 
 // ErrNilMessageReference indicate given message reference is nil.
