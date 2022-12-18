@@ -18,13 +18,13 @@ var (
 // ErrNilMessageReference indicate given message reference is nil.
 var ErrNilMessageReference = errors.New("nil message reference")
 
-// ProtobufMessage wrap protocol buffers message make it able to marshal and
+// ProtobufJSON wrap protocol buffers message make it able to marshal and
 // unmarshal with encoding/json package.
-type ProtobufMessage struct {
+type ProtobufJSON struct {
 	Message proto.Message
 }
 
-func (m *ProtobufMessage) MarshalJSON() ([]byte, error) {
+func (m *ProtobufJSON) MarshalJSON() ([]byte, error) {
 	if m.Message == nil {
 		return []byte("null"), nil
 	}
@@ -32,7 +32,7 @@ func (m *ProtobufMessage) MarshalJSON() ([]byte, error) {
 	return o.Marshal(m.Message)
 }
 
-func (m *ProtobufMessage) UnmarshalJSON(buf []byte) error {
+func (m *ProtobufJSON) UnmarshalJSON(buf []byte) error {
 	if m.Message == nil {
 		return ErrNilMessageReference
 	}
