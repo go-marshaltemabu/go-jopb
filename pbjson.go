@@ -24,6 +24,13 @@ type ProtobufJSON struct {
 	Message proto.Message
 }
 
+// NewProtobufJSON wrap given protocol buffers message into ProtobufJSON.
+func NewProtobufJSON(msg proto.Message) ProtobufJSON {
+	return ProtobufJSON{
+		Message: msg,
+	}
+}
+
 func (m *ProtobufJSON) MarshalJSON() ([]byte, error) {
 	if m.Message == nil {
 		return []byte("null"), nil
